@@ -15,6 +15,8 @@ class SongsCreate extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log('sbmitted');
+
     const { title } = this.state;
     this.props
       .mutate({
@@ -35,9 +37,10 @@ class SongsCreate extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <p>Add songs</p>
+          <h4>Add songs</h4>
           <input
             type='text'
+            className='form-control'
             value={this.state.title}
             onChange={(e) => this.setState({ title: e.target.value })}
           />

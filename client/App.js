@@ -6,7 +6,7 @@ import SongDetail from './components/SongDetail';
 
 const App = () => {
   return (
-    <div>
+    <div className='container'>
       <Router history={hashHistory}>
         <Route path='/' exact component={SongList} />
         <Route path='/new' exact component={SongsCreate} />

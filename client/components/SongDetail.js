@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'react-apollo';
-import AddLyricQuery from '../queries/AddLyric';
 import { Link } from 'react-router';
+import AddLyric from './addLyric';
 import fetchSong from '../queries/fetchSong';
-import fetchLyric from '../queries/fetchLyrics';
+import LyricList from './LyricsList';
 
 const SongDetail = (props) => {
-  console.log(props);
   const { song } = props.data;
+
   console.log(song);
+  if (song) console.log(song.lyrics);
   if (!song) {
     return <div>Loading.....</div>;
   }
-
-  const addSongLyric = () => {};
-
   return (
     <div>
       <Link to='/'>Back</Link>
       <h3>{song.title}</h3>
-      <button onClick={addSongLyric}> Add lyric</button>
+
+      <div>
+        <AddLyric songId={props.params.id} />
+      </div>
+
+      <div>
+        <div>
+          <h4>Lyrics</h4>
+        </div>
+        <div>
+          <LyricList lyrics={song.lyrics} />
+        </div>
+      </div>
     </div>
   );
 };
